@@ -1,6 +1,6 @@
 # 🚀 Proyectos destacados de Automatización (n8n)
 
-¡Hola! 👋 Aquí tienes un resumen visual y atractivo de algunos proyectos relevantes que he desarrollado usando **n8n**, integrando APIs, IA y automatizaciones que optimizan procesos reales. Este README está pensado para que lo pegues en tu `README.md` de GitHub — ya viene con estructura, emojis y formato Markdown listo para usar.
+¡Hola! 👋 Este es un resumen visual y atractivo de algunos proyectos relevantes que he desarrollado usando **n8n**, integrando APIs, IA y automatizaciones que optimizan procesos reales. 
 
 ---
 
