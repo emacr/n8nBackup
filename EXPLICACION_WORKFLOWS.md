@@ -10,7 +10,7 @@
 2. [Automatización de Búsqueda de Proveedores (busquedaProveedores)](#2-automatización-de-búsqueda-de-proveedores-busquedaproveedores)
 3. [Notificaciones y Reportes de Inventario (notificacionStockBajo)](#3-sistema-de-notificaciones-y-reportes-de-inventario-notificacionstockbajo)
 4. [Respaldo Automático de Workflows a GitHub (respaldoGithub)](#4-respaldo-automático-de-workflows-a-github-respaldogithub)
-
+5. [Sistema Multiagente para Pedidos (restaurantes)](#5-sistema-multiagente-para-pedidos-restaurantes)
 ---
 
 # 1. Agente de Ventas IA Multicanal — `ferretariacompras` 🛠️🤖
@@ -103,5 +103,33 @@ n8n API · GitHub API · Schedule Trigger · Lógica condicional y bucles
 * ⚙️ **Diseño modular**: cada workflow pensado para ser reutilizable y escalable.
 
 ---
+
+# 5. Sistema Multiagente para Pedidos  — `restaurantes`  🍽️🤝
+
+**Descripción corta:**
+Sistema conversacional multiagente para gestionar pedidos de restaurante, desde la bienvenida hasta la confirmación, con **NocoDB** como base de datos principal.
+
+**Arquitectura y funcionalidades clave:**
+
+* 🧭 **Agente Coordinador (coordinador):** el cerebro que enruta tareas entre agentes; su función es orquestar, no conversar.
+* 🧩 **Agentes especialistas (agentTool):** módulos con responsabilidad única — `tomaCombos`, `tomaAlas`, `tomaSalsas`, `tomaBebidas`, `tomaExtras` (presentan opciones desde NocoDB); `tomaNombre`, `tomaEntrega`, `tomaPago`, `tomaComentarios` (solicitan datos faltantes); `tomaUbicacion` (activa para delivery); `actualizaciones` (persiste cambios en NocoDB).
+* 🔎 **Verificación de estado del pedido:** al iniciar, verifica si el cliente ya existe y si hay pedidos activos (`pendiente_cliente`) y, antes de finalizar, comprueba que todos los campos obligatorios estén completos.
+* 🗺️ **Cálculo de distancia y costo de envío:** extrae lat/lon, usa Google Maps Distance Matrix API para calcular distancia/tiempo desde la sucursal más cercana y aplica una tabla de tarifas para calcular el costo dinámico de envío, luego lo actualiza en NocoDB.
+* 🧮 **Cálculo total y resumen:** nodo de código `Calcular_Total_y_Resumen` lee todos los datos del pedido desde NocoDB, consulta precios, calcula total (incluido envío) y genera un resumen detallado para el cliente.
+* ✅ **Finalización y confirmación:** tras la confirmación del cliente, el sistema marca el pedido como `confirmado_sucursal` en la base de datos.
+
+**Stack técnico destacado:**
+
+```
+Arquitectura Multiagente · LangChain (Agent Coordinator y Agent Tools) · NocoDB · Google Maps Distance Matrix API · JavaScript (Code Node) · Chatwoot (Webhook)
+```
+
+---
+
+
+
+
+
+
 
 
