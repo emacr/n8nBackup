@@ -93,15 +93,6 @@ Meta-workflow para respaldar los workflows de n8n en un repo de GitHub, con lóg
 ```
 n8n API · GitHub API · Schedule Trigger · Lógica condicional y bucles
 ```
-
----
-
-# ✨ Extras y notas de valor
-
-* ✅ **Automatizaciones robustas** preparadas para producción (manejo de errores, reintentos y logs).
-* 🔒 **Buenas prácticas** para seguridad en credenciales y acceso a APIs.
-* ⚙️ **Diseño modular**: cada workflow pensado para ser reutilizable y escalable.
-
 ---
 
 # 5. Sistema Multiagente para Pedidos  — `restaurantes`  🍽️🤝
